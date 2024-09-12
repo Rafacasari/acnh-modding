@@ -1,4 +1,6 @@
-- [Home Page](README)
-- [BCSV Editing](bcsv-editing)
-- Adding Content
-    - [Adding Furniture](adding-furniture)
+- [Getting Started](README)
+- File Formats
+    - [BCSV](file-formats/bcsv)
+- Modding
+    - [Adding Furniture](modding/furniture/adding-furniture)
+    - [Adding Furniture Recolors](modding/furniture/furniture-recolor.md)
