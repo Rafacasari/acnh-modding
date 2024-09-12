@@ -7,7 +7,7 @@
     content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
 
   <!-- Replace with your own title and description. -->
-  <title>Awesome Docsify Site</title>
+  <title>ACNH Modding Docs</title>
   <meta name="description" content="An awesome docsify site for publishing some content on the web.">
 
   <!-- Default Theme (see https://docsify.js.org/#/themes) -->
@@ -18,10 +18,12 @@
 <body>
   <div id="app"></div>
 
+  <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
+
   <script>
     // Docsify Configuration (see https://docsify.js.org/#/configuration)
     window.$docsify = {
-      name: 'Simple Docsify Template',
+      name: 'ACNH Modding',
 
       // Sidebar Configuration
       auto2top: true,
@@ -36,16 +38,24 @@
         noData: 'No matches found.',
         // Headline depth, 1 - 6
         depth: 2,
-      }
+      },
+
+      plugins: [
+        EditOnGithubPlugin.create("https://github.com/Rafacasari/acnh-modding/blob/main/")
+      ]
+
+
     };
   </script>
 
   <!-- Required -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
 
-  <!-- Recommended -->
+  <!-- Reccomended -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+
 
 </body>
 </html>
