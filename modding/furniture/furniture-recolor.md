@@ -4,14 +4,14 @@ First, we need a model compatible with Toolbox. It's recommended to have a singl
 
 The model and files from this tutorial will be available in the last section.
 
-## What You'll Need:
-- Blender (for model editing)
-- Toolbox
+## What You'll Need
+- [Blender](https://www.blender.org/download/)
+- [Switch Toolbox](https://github.com/KillzXGaming/Switch-Toolbox/releases/latest)
+- [Heaven Tool](https://github.com/Rafacasari/HeavenToolACNH/releases/latest)
+- MSBT Editor
 - Models and textures
 - Ftr example file
 - FtrReBody0 and FtrReBody1 example files
-- Heaven Tool (basic knowledge required)
-- MSBT Editor
 
 ## Blender Part
 
@@ -25,7 +25,7 @@ Now, proceed to Toolbox.
 
 ## Toolbox Part
 
-1. Open the Ftr model in Toolbox (e.g., FtrMinecraftRabbit).
+1. Open the Ftr model in Toolbox (*e.g. FtrMinecraftRabbit*).
 2. Replace the model in "Ftr > Models > Ftr" and select your model file.
 3. Use the Transform option if your model is too small.
 4. Save and select "Compress File with ZSTD" when prompted.
@@ -55,3 +55,6 @@ Replace these files in Toolbox and compress with ZSTD.
 If textures are not square (e.g., 64x64, 128x128), ReBody0 might not work.
 
 Download the files: [Google Drive Link](https://drive.google.com/file/d/1w6jW--THTc5v9mjRJIvIAoo444tJCLJD/view?usp=drive_link)
+
+---
+Guide written by **@NixcelPix**

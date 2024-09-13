@@ -2,5 +2,6 @@
 - File Formats
     - [BCSV](file-formats/bcsv)
 - Modding
+    - [Tools](modding/tools)
     - [Adding Furniture](modding/furniture/adding-furniture)
     - [Adding Furniture Recolors](modding/furniture/furniture-recolor.md)

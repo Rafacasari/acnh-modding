@@ -6,18 +6,18 @@ BCSV (**B**inary **C**omma-**S**eparated **V**alues) is a file format used in **
 > BCSV files can be edited with [Heaven Tool](https://github.com/Rafacasari/HeavenToolACNH)
 
 ## Binary Structure
-| Offset | Size | Description | Value |
-| ------ | ---- | ----------- | ----- |
-| 0x0  | 4 | UInt32 - Entries Count | * |
-| 0x4  | 4 | UInt32 - Entry Size | * |
-| 0x8  | 2 | UInt16 - Field Count | * |
-| 0xA  | 2 | UInt16 - BCSV Version | 257 |
-| 0xC  | 4 | File Header | "V", "S", "C", "B" |
-| 0x10 | 4 | Unknown | 20100 |
-| 0x14 | 4 | Unknown | 0 |
-| 0x18 | 4 | Unknown | 0 |
-| 0x1C | * | Array of [Field](#field-structure) | Field[\*fieldCount] |
-| * | * | [List of Entry](#entry-list)| Entry[\*entryCount] |
+| Offset | Size | Name | Description | Value |
+| ------ | ---- | ---- | ----------- | ----- |
+| 0x0  | 4 | Entries Count | Quantity of entries | * |
+| 0x4  | 4 | Entry Size | Size of each entry | * |
+| 0x8  | 2 | Field Count |  Quantity of fields| * |
+| 0xA  | 2 | BCSV Version | | 257 |
+| 0xC  | 4 | Header | File Header | "V", "S", "C", "B" |
+| 0x10 | 4 | Unknown | Unknown | 20100 |
+| 0x14 | 4 | Unknown | Unknown | 0 |
+| 0x18 | 4 | Unknown | Unknown | 0 |
+| 0x1C | * | Fields | Array of [Field](#field-structure) | Field[\*fieldCount] |
+| * | * | Entries | [List of Entry](#entry-list)| Entry[\*entryCount] |
 > Note: *File Header is backwards, so "VSCB" is actually "BCSV"*
 
 ## Field Structure
@@ -29,8 +29,8 @@ Fields are stored in a array located at 0x1C position and have the size/count de
 | 0x4 | 4 | Offset |
 
 ## Entry List
-> Offset: *Comes after [Fields](#field-structure) or `0x1C + FieldCount * 8`*\
-> List Size: *Determined by "Entries Count" ([0x0](#binary-structure))*
+> **Offset**: *Comes after [Fields](#field-structure) or `0x1C + FieldCount * 8`* \
+> **List Size**: *Determined by "Entries Count" ([0x0](#binary-structure))*
 
 #### Determine the size of each entry
 
