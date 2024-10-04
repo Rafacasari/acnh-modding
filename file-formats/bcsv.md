@@ -1,5 +1,3 @@
-# BCSV
-
 > This page still in production. Expect changes and more info to be added.
 
 ## What is BCSV?
@@ -25,18 +23,18 @@ BCSV (**B**inary **C**omma-**S**eparated **V**alues) is a file format used in **
 | 0x12 | 10 | Padding | 10-byte padding |
 
 ## Column Structure
-Column are stored in a array, comes after the Header and the array size is determined by "Field Count" ([0x8](#binary-structure)).
+Column are stored in a array, comes after the Header and the array size is determined by "Column Count" ([0x8](#header)).
 
 | Offset | Size | Description | 
 | ------ | ---- | ----------- |
 | 0x0 | 4 | CRC32 Hash |
-| 0x4 | 4 | Offset to Field in a row |
+| 0x4 | 4 | Offset to this column in a [row](#row-structure) |
 
 ## Row Structure
 | Offset | Size | Description | 
 | ------ | ---- | ----------- |
 | 0x0 | 4 | Offset (Position in the file) |
-| 0x4 | RowSize | Data |
+| 0x4 | * | Data |
 
 </br>
 
