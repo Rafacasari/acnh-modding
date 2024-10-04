@@ -1,6 +1,7 @@
 - [Getting Started](README)
 - File Formats
     - [BCSV](file-formats/bcsv)
+    - [Resource Size Table](srsizetable.md)
 - Modding
     - [Tools](modding/tools)
     - [Adding Furniture](modding/furniture/adding-furniture)
