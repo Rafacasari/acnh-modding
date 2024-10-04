@@ -5,34 +5,40 @@ BCSV (**B**inary **C**omma-**S**eparated **V**alues) is a file format used in **
 
 > BCSV files can be edited with [Heaven Tool](https://github.com/Rafacasari/HeavenToolACNH)
 
-## Binary Structure
-| Offset | Size | Name | Description | Value |
-| ------ | ---- | ---- | ----------- | ----- |
-| 0x0  | 4 | Entries Count | Quantity of entries | * |
-| 0x4  | 4 | Entry Size | Size of each entry | * |
-| 0x8  | 2 | Field Count |  Quantity of fields| * |
-| 0xA  | 2 | BCSV Version | | 257 |
-| 0xC  | 4 | Header | File Header | "V", "S", "C", "B" |
-| 0x10 | 4 | Unknown | Unknown | 20100 |
-| 0x14 | 4 | Unknown | Unknown | 0 |
-| 0x18 | 4 | Unknown | Unknown | 0 |
-| 0x1C | * | Fields | Array of [Field](#field-structure) | Field[\*fieldCount] |
-| * | * | Entries | [List of Entry](#entry-list)| Entry[\*entryCount] |
-> Note: *File Header is backwards, so "VSCB" is actually "BCSV"*
+## Header
+| Offset | Size | Name | Description |
+| ------ | ---- | ---- | ----------- |
+| 0x0  | 4 | Row Count | Quantity of [Rows](#row-structure) |
+| 0x4  | 4 | Row Size | Size of each [Row](#row-structure) |
+| 0x8  | 2 | Column Count |  Quantity of [Columns](#column-structure) |
+| 0xA  | 1 | HasExtendedHeader | If **1** will have more data, more info below |
+| 0xB  | 2 | Unknown | |
 
-## Field Structure
-Fields are stored in a array located at 0x1C position and have the size/count determined by "Field Count" ([0x8](#binary-structure)).
+### If `HasExtendedHeader` is `1` 
+
+| Offset | Size | Name | Description |
+| ------ | ---- | ---- | ----------- |
+| 0xC  | 4 | Header | Backwards BCSV - `VSCB` |
+| 0x10 | 2 | Version | Version |
+| 0x12 | 10 | Padding | 10-byte padding |
+
+## Column Structure
+Column are stored in a array, comes after the Header and the array size is determined by "Field Count" ([0x8](#binary-structure)).
 
 | Offset | Size | Description | 
 | ------ | ---- | ----------- |
-| 0x0 | 4 | Hash |
-| 0x4 | 4 | Offset |
+| 0x0 | 4 | CRC32 Hash |
+| 0x4 | 4 | Offset to Field in a row |
 
-## Entry List
-> **Offset**: *Comes after [Fields](#field-structure) or `0x1C + FieldCount * 8`* \
-> **List Size**: *Determined by "Entries Count" ([0x0](#binary-structure))*
+## Row Structure
+| Offset | Size | Description | 
+| ------ | ---- | ----------- |
+| 0x0 | 4 | Offset (Position in the file) |
+| 0x4 | RowSize | Data |
 
-#### Determine the size of each entry
 
-If it's **NOT** the last entry: *Use the offset for the next entry minus the current offset*\
-If it's the last entry: *Use [Entry Size (0x4)](#binary-structure) minus the current offset.*
+> This page still in production. Expect changes and more info to be added.
+
+
+### Special Thanks
+This page have been updated with some info collected by @kinnay in [this page](https://nintendo-formats.com/games/acnh/bcsv.html).
