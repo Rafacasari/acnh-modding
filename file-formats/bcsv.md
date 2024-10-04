@@ -1,9 +1,11 @@
 # BCSV
 
+> This page still in production. Expect changes and more info to be added.
+
 ## What is BCSV?
 BCSV (**B**inary **C**omma-**S**eparated **V**alues) is a file format used in **Animal Crossing: New Horizons**, BCSV is a binary variant of CSV (comma-separated values) that have headers encrypted in **CRC32**.
 
-> BCSV files can be edited with [Heaven Tool](https://github.com/Rafacasari/HeavenToolACNH)
+> **BCSV** files can be edited with [Heaven Tool](https://github.com/Rafacasari/HeavenToolACNH)
 
 ## Header
 | Offset | Size | Name | Description |
@@ -36,9 +38,7 @@ Column are stored in a array, comes after the Header and the array size is deter
 | 0x0 | 4 | Offset (Position in the file) |
 | 0x4 | RowSize | Data |
 
+</br>
 
-> This page still in production. Expect changes and more info to be added.
-
-
-### Special Thanks
+### Special Thanks ❤️
 This page have been updated with some info collected by @kinnay in [this page](https://nintendo-formats.com/games/acnh/bcsv.html).
