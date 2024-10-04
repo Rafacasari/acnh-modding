@@ -16,7 +16,7 @@ We have a Discord Community where we discover new things and help each other. Fe
 **[ACNH Modding Community](https://discord.gg/4cBd8dD6XS)**
 
 ### Other Communities
-There is some other communities that you can join!
+There are some other communities that you can join!
 
 - [Buttercup Babies](https://discord.gg/xtvQ8yBWmb)
 - [ACNH Spreadsheet](https://discord.gg/uGBmkpDcZs)
