@@ -1,5 +1,5 @@
 - [Getting Started](README)
-- [Tools](modding/tools)
+- Tools
     - [Heaven Tool](modding/tools/heaven-tool)
     - [MSBT Editor](modding/tools/msbt-editor)
 - File Formats
