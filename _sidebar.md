@@ -4,5 +4,6 @@
     - [Resource Size Table](file-formats/srsizetable)
 - Modding
     - [Tools](modding/tools)
+       - [MSBT Editor](modding/tools/msbt-editor)
     - [Adding Furniture](modding/furniture/adding-furniture)
     - [Adding Furniture Recolors](modding/furniture/furniture-recolor.md)
