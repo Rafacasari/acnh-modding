@@ -1,9 +1,10 @@
 - [Getting Started](README)
+- [Tools](modding/tools)
+    - [Heaven Tool](modding/tools/heaven-tool)
+    - [MSBT Editor](modding/tools/msbt-editor)
 - File Formats
     - [BCSV](file-formats/bcsv)
     - [Resource Size Table](file-formats/srsizetable)
 - Modding
-    - [Tools](modding/tools)
-       - [MSBT Editor](modding/tools/msbt-editor)
     - [Adding Furniture](modding/furniture/adding-furniture)
     - [Adding Furniture Recolors](modding/furniture/furniture-recolor.md)
