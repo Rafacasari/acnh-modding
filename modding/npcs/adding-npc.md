@@ -5,13 +5,13 @@ We'll also go over some of the finer details, including their personality, hobby
 
 !> This tutorial will **NOT** cover creating textures and models, as there are already quite a few tutorials for that.
 
-### Needed Applications:
+### Needed Applications
 - [Heaven Tool](https://gamebanana.com/wips/87003)
 - [Switch Toolbox](https://github.com/KillzXGaming/Switch-Toolbox)
 - [MSBT Editor](https://gitlab.com/AeonSake/msbt-editor)
 - _Optional (but recommended):_ [Emuiibo](https://github.com/XorTroll/emuiibo) (and dependencies)
 
-### Needed Files: 
+### Needed Files
 - `romfs/Bcsv/AmiiboData.bcsv`
 - `romfs/Bcsv/NmlNpcParam.bcsv`
 - `romfs/Bcsv/ItemParam.bcsv` (**optional**, picture and poster of the villager)
@@ -111,10 +111,10 @@ This can be accomplished simply by:
 
 ![image](https://github.com/user-attachments/assets/f0dc27d8-8eab-4ad6-ad6d-371198fcb4d0)
 
-## Step 4: 
+## Step 4
 Now the "tricky" part, we'll be choosing what the exterior and interior of their houses will look like. Then we'll be making sure that the character itself knows how to hold items and such. [Use Nookpedia to see all the houses available](https://nookipedia.com/wiki/Villager_house/New_Horizons) and remember which villager label you need for the houses. For Canyne, I'll be using Croque's (`flg09`) exterior and Wart Jr's (`flg05`) interior.
 
-## Step 4.1:
+## Step 4.1
 Open `StaticParam.pack` in Switch Toolbox and you'll see that `NPCHouse(exterior)` is the first folder and `NPCRoom(interior)` is the third folder. Expand those and track down the villager you want to take their house from, extract them somewhere easy to find and name them after your label, in my case **wol13.byml**. 
 
 > **Attention**: _Keep them in separate folders since they will have the same name._\
@@ -136,7 +136,7 @@ Looking in the newly displayed text, we can see where it says `flg09` or `flg05`
 
 To the right of these lines, you'll see item numbers, and yes they correspond to the item numbers in `ItemParam.bcsv`. So you can change their wallpaper, flooring, and their song while you're in there, to further customize them.
 
-## Step 4b:
+## Step 4.2
 Now while we're still in `StaticParam.pack`, scroll further down and you'll find the "Gmo" folder. This contains personal info about where items are held on the model and other things. So just find the species that matches your villager, extract, rename, add file and that's all you need to do for that.
 
 ![image](https://github.com/user-attachments/assets/e39be26b-5785-41ff-a337-b87d8c934210)
