@@ -82,7 +82,7 @@ This is simply an identification list for what villager is being referenced upon
 
 | Name | Description |
 | ---- | ----------- |
-| **NumberID** | This is tied to the UniqueID from [Step 2.1](#step-2.1). |
+| **NumberID** | This is tied to the UniqueID from [Step 2.1](#step-21). |
 | **NPCLabel** | This is your label that you should remember still, so I filled in wol13. |
 
 **All other columns should just be copied from any other villager with a number in their label.**
@@ -142,4 +142,4 @@ Now while we're still in `StaticParam.pack`, scroll further down and you'll find
 ![image](https://github.com/user-attachments/assets/e39be26b-5785-41ff-a337-b87d8c934210)
 
 ## Done!
-Congrats, that should be all you really need to do for this to work. Get all of your files into your ACNH `romFs` folder, boot up your Animal Crossing, and head over to resident services. Scan the Amiibo that you set up in [Step 2.2](#step-2.2) with Emuiibo in the Tesla Overlay and see if they appear!
+Congrats, that should be all you really need to do for this to work. Get all of your files into your ACNH `romFs` folder, boot up your Animal Crossing, and head over to resident services. Scan the Amiibo that you set up in [Step 2.2](#step-22) with Emuiibo in the Tesla Overlay and see if they appear!
