@@ -7,4 +7,5 @@
     - [Resource Size Table](file-formats/srsizetable)
 - Modding
     - [Adding Furniture](modding/furniture/adding-furniture)
-    - [Adding Furniture Recolors](modding/furniture/furniture-recolor.md)
+    - [Adding Furniture Recolors](modding/furniture/furniture-recolor)
+    - [Adding a new NPC](modding/npcs/adding-npc)
