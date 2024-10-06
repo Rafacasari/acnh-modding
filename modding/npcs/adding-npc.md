@@ -99,7 +99,7 @@ This will be the two files in romfs/Message.
 
 This can be accomplished simply by:
 1. Open your `romFs/Message` folder with **MSBT Editor**
-2. Locate and expand  `String_USen.sarc.zs` and inside of it, locate and expand `Npc` folder
+2. Locate and expand `String_USen.sarc.zs` and inside of it, locate and expand `Npc` folder
 3. Edit `STR_NNpcName.msbt` and `STR_NNpcPhrase.msbt` (Simply duplicate the last entry, which is Audie [wol12] and change out their name and phrase, which is what they say all the time while talking)
 4. Now we find the `TalkSys_USen.sarc.zs` file to edit `SYS_Motto.msbt`, duplicate the last entry and edit it the same way you did before. This one is what dialog appears when interacting with the villager's picture item.
 
