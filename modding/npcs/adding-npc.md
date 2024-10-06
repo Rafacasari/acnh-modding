@@ -8,9 +8,8 @@ We'll also go over some of the finer details, including their personality, hobby
 ### Needed Applications:
 - [Heaven Tool](https://gamebanana.com/wips/87003)
 - [Switch Toolbox](https://github.com/KillzXGaming/Switch-Toolbox)
-- [Kuriimu](https://github.com/IcySon55/Kuriimu) or [MSBT Editor](https://gitlab.com/AeonSake/msbt-editor)\
-<sup>MSBT Editor don't let you save as it have duplicate attributes for adding new info, but Kuriimu still works.</sup>
-- Optional but recommended: [Emuiibo](https://github.com/XorTroll/emuiibo) (and dependencies)
+- [MSBT Editor](https://gitlab.com/AeonSake/msbt-editor)
+- _Optional (but recommended):_ [Emuiibo](https://github.com/XorTroll/emuiibo) (and dependencies)
 
 ### Needed Files: 
 - `romfs/Bcsv/AmiiboData.bcsv`
@@ -98,5 +97,49 @@ If you want to convert your characterid straight to the corresponding game_chara
 Now we'll get a name, saying and motto set up so the system knows who they are.
 This will be the two files in romfs/Message.
 
-Open up `String_USen.sarc.zs` in Switch Toolbox and head to the NPC folder, we need to right click and extract `STR_NNpcName.msbt` and `STR_NNpcPhrase.msbt` somewhere easy to find. The Phrase file is what they say all the time while talking.
-![image](https://github.com/user-attachments/assets/b81cf7be-6d2f-4886-a1f0-5158ee26bd1e)
+This can be accomplished simply by:
+1. Open your `romFs/Message` folder with **MSBT Editor**
+2. Locate and expand  `String_USen.sarc.zs` and inside of it, locate and expand `Npc` folder
+3. Edit `STR_NNpcName.msbt` and `STR_NNpcPhrase.msbt` (Simply duplicate the last entry, which is Audie [wol12] and change out their name and phrase, which is what they say all the time while talking)
+4. Now we find the `TalkSys_USen.sarc.zs` file to edit `SYS_Motto.msbt`, duplicate the last entry and edit it the same way you did before. This one is what dialog appears when interacting with the villager's picture item.
+
+**Attention**: When duplicating entries, don't fon't to change the label! (for example `label: wol12` to your new label, which in my case is `label: wol13`)
+
+![MsbtEditor_aKXAG5aCA8](https://github.com/user-attachments/assets/ac2d0e00-507d-45db-b394-fafd443b7c89)
+
+5. Save both `String_USen.sarc.zs` and `TalkSys_USen.sarc.zs` by right-clicking them and hitting `Save` button
+
+![image](https://github.com/user-attachments/assets/f0dc27d8-8eab-4ad6-ad6d-371198fcb4d0)
+
+## Step 4: 
+Now the "tricky" part, we'll be choosing what the exterior and interior of their houses will look like. Then we'll be making sure that the character itself knows how to hold items and such. [Use Nookpedia to see all the houses available](https://nookipedia.com/wiki/Villager_house/New_Horizons) and remember which villager label you need for the houses. For Canyne, I'll be using Croque's (`flg09`) exterior and Wart Jr's (`flg05`) interior.
+
+## Step 4.1:
+Open `StaticParam.pack` in Switch Toolbox and you'll see that `NPCHouse(exterior)` is the first folder and `NPCRoom(interior)` is the third folder. Expand those and track down the villager you want to take their house from, extract them somewhere easy to find and name them after your label, in my case **wol13.byml**. 
+
+> **Attention**: _Keep them in separate folders since they will have the same name._\
+> **Example**: `NPCHouse/wol13.byml` and `NPCRoom/wol13.byml`
+
+![image](https://github.com/user-attachments/assets/a4d1ffb8-dc6c-418e-b10e-274202bbeb6a)
+
+
+Once they're both named after your label, go back into Switch Toolbox, right click on the folder that they came out of and choose "add file" and select the house for the NPCHouse and the room for the NPCRoom. After that find them at the bottom of each of those folders and double click the entry. Change to the **Text Editor** tab and press **Decompile** button.
+
+Looking in the newly displayed text, we can see where it says `flg09` or `flg05` (under `root:`) and those are going to be replaced (in my case) with `wol13`. Once you've done that you can press Compile again to save that change.
+
+![image](https://github.com/user-attachments/assets/ae3957b1-6932-4b9d-bb33-2acd9d508164)
+
+**Optional part of NPCHouse:** If you look through the decompiled text, you'll see these: lines:
+- [!h mWall:](https://docs.google.com/spreadsheets/d/13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4/edit?gid=1735913386#gid=1735913386) - towards the top
+- [!h mFloor:](https://docs.google.com/spreadsheets/d/13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4/edit?gid=1642607665#gid=1642607665) - towards the bottom
+- [!h mMusic:](https://docs.google.com/spreadsheets/d/13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4/edit?gid=1450768169#gid=1450768169) - towards the bottom
+
+To the right of these lines, you'll see item numbers, and yes they correspond to the item numbers in `ItemParam.bcsv`. So you can change their wallpaper, flooring, and their song while you're in there, to further customize them.
+
+## Step 4b:
+Now while we're still in `StaticParam.pack`, scroll further down and you'll find the "Gmo" folder. This contains personal info about where items are held on the model and other things. So just find the species that matches your villager, extract, rename, add file and that's all you need to do for that.
+
+![image](https://github.com/user-attachments/assets/e39be26b-5785-41ff-a337-b87d8c934210)
+
+## Done!
+Congrats, that should be all you really need to do for this to work. Get all of your files into your ACNH `romFs` folder, boot up your Animal Crossing, and head over to resident services. Scan the Amiibo that you set up in [Step 2.2](#step-2.2) with Emuiibo in the Tesla Overlay and see if they appear!
