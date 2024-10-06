@@ -10,4 +10,12 @@ The main difference between RSTB and RSTC is that RST**C** contains 4 more bytes
 
 # Binary Structure
 
+There is a lot of technical information about RSTB files [here](https://github.com/leoetlino/botw-re-notes/blob/master/resource_system.md#resource-size-table), but for Animal-Crossing New Horizons, the RSTB constant is `416`.
 
+```csharp
+// Round value to multiples of 32
+size = (size + 31) & -32;
+
+// Add Constant
+size += 416;
+```
