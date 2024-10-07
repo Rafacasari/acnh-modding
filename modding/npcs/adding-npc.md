@@ -1,5 +1,3 @@
-!> From our tests, Ryujinx crashes as soon as a modified `StaticParam.pack` is loaded, but we've been informed that there doesn't seem to be an issue with Yuzu. 
-
 This tutorial will go over what needs to be edited and added to the `.bcsv`, message and `StaticParam.pack` files for getting a new villager as a new entry, instead of [replacing an existing villager](villagers/replacing-a-villager).
 We'll also go over some of the finer details, including their personality, hobby, favorite colors, what apparel they wear in certain conditions, and so on. 
 
