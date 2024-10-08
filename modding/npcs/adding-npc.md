@@ -82,13 +82,7 @@ This is simply an identification list for what villager is being referenced upon
 ### Automatic Method
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
-
-  Villager Name: <input autocomplete="off" type="text" required="true" id="npcName" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
-  Villager Label: <input autocomplete="off" type="text" required="true" id="npcLabel" maxlength="8" onkeypress="NoSpecialChars(event)" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
-  <button id="generateButton">Generate</button>
-
-
-  <script>
+ <script>
   // Help functions
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -259,6 +253,13 @@ This is simply an identification list for what villager is being referenced upon
   }
   
   </script>
+  
+  Villager Name: <input autocomplete="off" type="text" required="true" id="npcName" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
+  Villager Label: <input autocomplete="off" type="text" required="true" id="npcLabel" maxlength="8" onkeypress="NoSpecialChars(event)" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
+  <button id="generateButton">Generate</button>
+
+
+ 
 
 ### Manual Wethod
 | Name | Description |
