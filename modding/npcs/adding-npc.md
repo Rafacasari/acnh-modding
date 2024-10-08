@@ -82,11 +82,11 @@ This is simply an identification list for what villager is being referenced upon
 ### Automatic Method
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
-<form autocomplete="off" id="form">
+
   Villager Name: <input autocomplete="off" type="text" required="true" id="npcName" onpaste="return false;" pattern="[a-zA-Z0-9]*"/>
   Villager Label: <input autocomplete="off" type="text" required="true" id="npcLabel" maxlength="8" onkeypress="NoSpecialChars(event)" onpaste="return false;" pattern="[a-zA-Z0-9]*"/>
   <button id="generateButton">Generate</button>
-</form>
+
 
   <script type="text/javascript">
   // Help functions
@@ -100,16 +100,7 @@ This is simply an identification list for what villager is being referenced upon
   const npcLabel = document.getElementById("npcLabel");
   const npcName = document.getElementById("npcName");
   
-  //** Prevent page refresh when form sent **//
-  var form=document.getElementById("form");
-  
-  function submitForm(event){
-     event.preventDefault();
-  }
-
-  form.addEventListener('submit', submitForm);
-  
-      let randomNumber;
+  let randomNumber;
   let randomNumberingId;
   
   function getCurrentDate() {
