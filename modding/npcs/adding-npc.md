@@ -82,7 +82,7 @@ This is simply an identification list for what villager is being referenced upon
 
 ### Automatic Method
 Villager Name: <input autocomplete="off" type="text" required="true" id="npcName" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
-Villager Label: <input autocomplete="off" type="text" required="true" id="npcLabel" maxlength="8" onkeypress="NoSpecialChars(event)" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
+Villager Label: <input autocomplete="off" type="text" required="true" id="npcLabel" maxlength="8" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
 <button id="generateButton">Generate</button>
  
 
