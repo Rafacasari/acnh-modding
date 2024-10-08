@@ -77,7 +77,199 @@ Now let's go over the cells, we'll be moving from left to right and I'll be touc
 ## Step 2.2
 ### Editing `AmiiboData.bcsv`
 This is simply an identification list for what villager is being referenced upon scanning an Amiibo. 
+--- 
 
+### Automatic Method
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<form autocomplete="off" id="form">
+  Villager Name: <input autocomplete="off" type="text" required="true" id="npcName" onpaste="return false;" pattern="[a-zA-Z0-9]*"/>
+  Villager Label: <input autocomplete="off" type="text" required="true" id="npcLabel" maxlength="8" onkeypress="NoSpecialChars(event)" onpaste="return false;" pattern="[a-zA-Z0-9]*"/>
+  <button id="generateButton">Generate</button>
+</form>
+
+  <script type="text/javascript">
+  // Help functions
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+    
+  const generateButton = document.getElementById("generateButton");
+  const npcLabel = document.getElementById("npcLabel");
+  const npcName = document.getElementById("npcName");
+  
+  //** Prevent page refresh when form sent **//
+  var form=document.getElementById("form");
+  
+  function submitForm(event){
+     event.preventDefault();
+  }
+
+  form.addEventListener('submit', submitForm);
+  
+      let randomNumber;
+  let randomNumberingId;
+  
+  function getCurrentDate() {
+    const date = new Date();
+    return {
+      y: date.getFullYear(),
+      m: date.getMonth() + 1, // Meses começam em 0
+      d: date.getDate()
+    };
+  }
+  
+  function generateRandomUUID() {
+    return (Array.from({ length: 8 }, () => Math.floor(Math.random() * 256))).concat([0, 0, 0]);
+  }
+
+  function NoSpecialChars (e) {  // Accept only alpha numerics, no special characters 
+    var regex = new RegExp("^[a-zA-Z0-9]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+      return true;
+    }
+
+    e.preventDefault();
+    return false;
+  }
+  
+     
+
+      generateButton.addEventListener("click", () => {
+    if (npcName.value == "" || npcLabel.value == "") return;
+  
+    // Last original entry + 256 
+          randomNumber = getRandomInt(663552 + 256, 4294967295);
+
+    randomNumber = Math.abs(randomNumber & -256);
+    
+    console.log(randomNumber);
+    randomNumberingId = getRandomInt(984, 65535);
+    
+    SaveBCSVFile();
+    SaveAmiiboZip();
+      });
+
+
+  function SaveBCSVFile() {
+    if (npcLabel.value == "") return; 
+
+    const blobParts = [];
+    const entrySize = 28; // AmiiboData EntrySize
+
+    const fields = [{"Hash":3350015967,"Offset":4},{"Hash":77885493,"Offset":8},{"Hash":4138945558,"Offset":10},{"Hash":2890543941,"Offset":12},{"Hash":885583573,"Offset":13},{"Hash":2175024758,"Offset":21},{"Hash":3701969225,"Offset":22},{"Hash":1534894258,"Offset":23},{"Hash":496616723,"Offset":24},{"Hash":196503666,"Offset":25}];
+
+    // Header
+    blobParts.push(new Uint32Array([1]));  // Entries Count
+    blobParts.push(new Uint32Array([entrySize])); // Entry Size
+    blobParts.push(new Uint16Array([fields.length])); // Field Count
+    blobParts.push(new Uint8Array([1, 1])); // HasExtenderHeader, Unknown
+    blobParts.push(new TextEncoder().encode("VSCB")); // BCSV magic
+    blobParts.push(new Uint16Array([20100])); // Version
+    blobParts.push(new Uint8Array(10)); // Padding
+    
+    // Write Fields
+    fields.forEach(field => {
+      blobParts.push(new Uint32Array([field["Hash"]]));
+      blobParts.push(new Uint32Array([field["Offset"]]));
+    });
+    
+    // Writing our entry (in this case only one)
+    const entryPosition = new Uint32Array([blobParts.reduce((acc, curr) => acc + curr.byteLength, 0)]);
+    blobParts.push(entryPosition);
+
+    blobParts.push(new Uint32Array([randomNumber])); // Random Id
+    blobParts.push(new Uint16Array([randomNumberingId]));
+    blobParts.push(new Uint16Array([-1]));	
+    blobParts.push(new Uint8Array([1]));
+    
+    let textData = [0, 0, 0, 0, 0, 0, 0, 0]
+    let newText = new TextEncoder().encode(npcLabel.value);
+    
+    for (let i = 0; i < newText.length; i++) {
+      if (i >= 8) return;
+      textData[i] = newText[i];
+    }
+    
+    blobParts.push(new Uint8Array(textData));
+    
+    blobParts.push(new Uint8Array([0]));
+    blobParts.push(new Uint8Array([0]));
+    blobParts.push(new Uint8Array([5]));
+    blobParts.push(new Uint8Array([0]));
+    
+    blobParts.push(new Uint8Array([0]));
+    blobParts.push(new Uint8Array([0]));
+    blobParts.push(new Uint8Array([0]));
+    
+
+    const blob = new Blob(blobParts, { type: 'application/octet-stream' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "AmiiboData_" + npcLabel.value + ".bcsv";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  
+  
+  function resize(arr, newSize, defaultValue) {
+    return [ ...arr, ...Array(Math.max(newSize - arr.length, 0)).fill(defaultValue)];
+  }
+  
+  function toAmiiboId(value) {
+    value = value >> 4;
+    let firstDigit = (value >> 12) & 0xF;
+    let shiftedValue = (value & 0xFFF) << 4;
+    return shiftedValue | firstDigit;
+  }
+
+  function SaveAmiiboZip() {
+    const zip = new JSZip();
+    
+    const amiibo_data = {
+      name: npcName.value,
+      write_counter: 0,
+      version: 0,
+      mii_charinfo_file: 'mii-charinfo.bin',
+      first_write_date: getCurrentDate(),
+      last_write_date: getCurrentDate(),
+      id: {
+        game_character_id: toAmiiboId(randomNumber),
+        character_variant: 0,
+        figure_type: 1,
+        series: 5,
+        model_number: randomNumberingId
+      },
+      use_random_uuid: true,
+      uuid: generateRandomUUID()
+    };
+    
+
+          const jsonString = JSON.stringify(amiibo_data, null, 2);
+          zip.file("amiibo.json", jsonString);
+    zip.file("amiibo.flag", new Uint8Array());
+    zip.file("amiibo.png", new Uint8Array());
+    zip.file("tutorial.txt", "Replace amiibo.png with your npc/villager png image!");
+    
+    zip.generateAsync({ type: "blob" }).then(function (content) {
+              const a = document.createElement("a");
+              const url = URL.createObjectURL(content);
+              a.href = url;
+              a.download = "amiibo.zip";
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url); // Libera a memória do Blob
+          });
+  }
+  
+  </script>
+
+### Manual Wethod
 | Name | Description |
 | ---- | ----------- |
 | **NumberID** | This is tied to the UniqueID from [Step 2.1](#step-21). |
@@ -90,6 +282,7 @@ Thanks to some info from @**LTGlambchop**, you can add new rows for your village
 With that in mind, if we look at [Faith's amiibo card ammibo.json](https://drive.google.com/drive/folders/1ZpDLpOxPgv97BKDhx5-o2WwOoESnqRAd) we see that her game_character_id is 8202. Simply add 256 to this number as many times as you did to 663552 and that will be the corresponding number to put in amiibo.json to match your characterid in the amiibo.bcsv.
 
 If you want to convert your characterid straight to the corresponding game_character_id [use the method described here](https://discord.com/channels/1291243062865039431/1291846660225241088/1292141518370373705) to convert your chosen increment of +256 to the resulting number to put in your amiibo.json, save and put that folder named after your villager into emuiibo and it should scan.
+
 
 ## Step 3
 Now we'll get a name, saying and motto set up so the system knows who they are.
