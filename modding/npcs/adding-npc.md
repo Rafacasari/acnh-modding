@@ -26,7 +26,7 @@ I'll use `Canyne` in this tutorial, and I named his file `NpcNmlWol13.Nin_NX_NV
 
 ![image](https://github.com/user-attachments/assets/482f6e86-a1d3-4b93-ac9b-a7f7f716bd46)
 
-## Step 2.1 
+## Step 2.1
 ### Editing `NmlNpcParam.bcsv`
 We'll start with opening `NmlNpcParam.bcsv` in **Heaven Tool** and get the guts of the villager sorted out, I've extracted the line I made for wol13 so we can focus on each of the cells. It's a good idea to find a villager who's close to what you have in mind, export their line, reimport their line, and go from there. I originally chose Wolfgang(wol02) and changed him into Canyne(wol13).
 
@@ -78,15 +78,21 @@ Now let's go over the cells, we'll be moving from left to right and I'll be touc
 ### Editing `AmiiboData.bcsv`
 This is simply an identification list for what villager is being referenced upon scanning an Amiibo. 
 
---- 
-
 ### Automatic Method
-Villager Name: <input autocomplete="off" type="text" required="true" id="npcName" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
-Villager Label: <input autocomplete="off" type="text" required="true" id="npcLabel" maxlength="8" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
-<button id="generateButton">Generate</button>
- 
+This method will pretty much do **everything** for you, it will generate a `AmiiboData.bcsv` entry and a zip containing your **Emuiibo**.\
+Use **Heaven Tool** to merge the generated BCSV file into your `AmiiboData.bcsv`, then replace `amiibo.png` in the `amiibo.zip` with a image of your choice.
 
-### Manual Wethod
+<div class="amiibo-form">
+    <form autocomplete="off" id="amiibo-form">
+        Name
+        <input autocomplete="off" type="text" required="true" id="npcName" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
+        Label (e.g. <code>wo13</code>)
+        <input autocomplete="off" type="text" required="true" id="npcLabel" maxlength="8"  onkeypress="AmiiboPlugin.NoSpecialChars(event)" onpaste="return false;" pattern="[a-zA-Z0-9]*"/></br>
+        <button id="generateButton" onclick="AmiiboPlugin.ClickButton()">Generate</button>
+    </form>
+</div>
+
+### Manual Method
 | Name | Description |
 | ---- | ----------- |
 | **NumberID** | This is tied to the UniqueID from [Step 2.1](#step-21). |
