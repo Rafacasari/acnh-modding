@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport"
     content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-  <link rel="shortcut icon" type="image/x-icon" href="acnh-modding/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <!-- Replace with your own title and description. -->
   <title>ACNH Modding Docs</title>
   <meta name="description"
@@ -70,9 +70,6 @@
       const generateButton = document.getElementById("generateButton");
       const npcLabel = document.getElementById("npcLabel");
       const npcName = document.getElementById("npcName");
-
-      // let randomNumber;
-      // let randomNumberingId;
 
       function getCurrentDate() {
         const date = new Date();
@@ -158,7 +155,7 @@
         blobParts.push(entryPosition);
 
         blobParts.push(new Uint32Array([characterId])); // Random Id
-        blobParts.push(new Int16Array([numberingId])); // Numbering Id
+        blobParts.push(new Uint16Array([numberingId])); // Numbering Id
         blobParts.push(new Uint16Array([-1]));
         blobParts.push(new Uint8Array([1]));
 
