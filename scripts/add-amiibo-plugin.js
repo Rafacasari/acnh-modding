@@ -20,13 +20,18 @@
         if (npcName.value == "" || npcLabel.value == "") return;
 
         // Last original entry + 256 
-        let randomValue =  getRandomInt(1, 223);
-
-        let characterId = 663552 + (256 * randomValue);
         //let characterId = getRandomInt(663552 + 256, 6635520);
         //characterId = Math.abs(characterId & -256); // Make sure our value is positive
 
         //let numberingId = getRandomInt(984, 65535);
+
+        // Generate a random value between 1 and 223. Seems it's the max extra NPCs we can have for now
+        let randomValue =  getRandomInt(1, 223);
+
+        // Use the last NPC id + (256 which is the padding multiplied by our random value)
+        let characterId = 663552 + (256 * randomValue);
+
+        // Last Numbering entry + our random value
         numberingId = 983 + randomValue;
 
         console.log("Generated CharacterId: " + characterId);
