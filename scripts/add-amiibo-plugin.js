@@ -20,7 +20,7 @@
         if (npcName.value == "" || npcLabel.value == "") return;
 
         // Last original entry + 256 
-        let characterId = getRandomInt(663552 + 256, 4294967295);
+        let characterId = getRandomInt(663552 + 256, 6635520);
         characterId = Math.abs(characterId & -256); // Make sure our value is positive
 
         let numberingId = getRandomInt(984, 65535);
@@ -68,9 +68,6 @@ function getCurrentDate() {
 function generateRandomUUID() {
     return (Array.from({ length: 8 }, () => Math.floor(Math.random() * 256))).concat([0, 0, 0]);
 }
-
-
-
 
 function SaveBCSVFile(characterId, numberingId) {
     if (npcLabel.value == "") return;
