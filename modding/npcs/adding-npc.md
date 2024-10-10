@@ -1,3 +1,5 @@
+# Adding a new NPC <!-- {docsify-ignore} -->
+
 This tutorial will go over what needs to be edited and added to the `.bcsv`, message and `StaticParam.pack` files for getting a new villager as a new entry, instead of [replacing an existing villager](villagers/replacing-a-villager).
 We'll also go over some of the finer details, including their personality, hobby, favorite colors, what apparel they wear in certain conditions, and so on. 
 
@@ -31,6 +33,36 @@ I'll use `Canyne` in this tutorial, and I named his file `NpcNmlWol13.Nin_NX_NV
 We'll start with opening `NmlNpcParam.bcsv` in **Heaven Tool** and get the guts of the villager sorted out, I've extracted the line I made for wol13 so we can focus on each of the cells. It's a good idea to find a villager who's close to what you have in mind, export their line, reimport their line, and go from there. I originally chose Wolfgang(wol02) and changed him into Canyne(wol13).
 
 Now let's go over the cells, we'll be moving from left to right and I'll be touching on only the cells I actively changed. A lot of columns are self explanatory, but I'll be talking about them anyway. Each of the images below these descriptions list all the possible entries in certain columns.
+
+**a54f92fd** - Preferred clothing style by country of origin
+| Value | Description |
+| ---- | ----------- |
+| `4` | Chinese |
+| `9` | None |
+| `10` | Japanese |
+
+**5ef86f1f** - 1st preferred style of clothing
+| Value | Description |
+| ---- | ----------- |
+| `1` | Simple |
+| `2` | Gorgeous |
+| `3` | Cool |
+| `4` | Cute |
+| `5` | Active |
+| `6` | Elegant |
+
+**195815cf** - 1st Preferred Style of Clothing
+| Value | Description |
+| ---- | ----------- |
+| `1` | Simple |
+| `2` | Gorgeous |
+| `3` | Cool |
+| `4` | Cute |
+| `5` | Active |
+| `6` | Elegant |
+
+![image](https://github.com/user-attachments/assets/da01f0a6-cb2a-4205-8719-864b67677293)
+
 
 | Name | Description |
 | ---- | ----------- |
