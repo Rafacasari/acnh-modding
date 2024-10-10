@@ -15,9 +15,8 @@ We'll also go over some of the finer details, including their personality, hobby
 - `romfs/Bcsv/AmiiboData.bcsv`
 - `romfs/Bcsv/NmlNpcParam.bcsv`
 - `romfs/Bcsv/ItemParam.bcsv` (**optional**, picture and poster of the villager)
-- `romfs/Message/String_USen.sarc.zs`
-- `romfs/Message/TalkSys_USen.sarc.zs`\
-<sup>For the message files, make it the language you're using.</sup>
+- `romfs/Message/String_XXyy.sarc.zs` (Where `XXyy` is the target-language, in this case `USen`)
+- `romfs/Message/TalkSys_XXyy.sarc.zs` (Where `XXyy` is the target-language, in this case `USen`)
 - `romfs/Model/(your villager model)`
 - `romfs/Pack/StaticParam.pack`
 
