@@ -65,8 +65,9 @@ We gonna edit these files:
 - `Remake/STR_Remake_BodyColor.msbt`
 
 2. Open `Item/STR_ItemName_00_Ftr.msbt` 
-Scroll-down to the very end of the file and add a new entry to it, using your ItemParam.`UniqueID`: 
-```
+Scroll-down to the very end of the file and add a new entry to it, using your ItemParam.`UniqueID`:
+
+```msbt
 ---
 label: Ftr_{YourUniqueIdHere}
 attribute: 
@@ -77,7 +78,7 @@ attribute:
 3. Open `Remake/STR_Remake_BodyParts.msbt`
 We gonna do the same as the previous step, but now with some name like `Color`, `Paint Color`, `Material` or however you want to name it
 
-```
+```msbt
 ---
 label: Ftr_{YourUniqueIdHere}
 attribute: 
@@ -92,7 +93,8 @@ We gonna do something similar to the previous steps, but adding as much entries 
 Where `Ftr_{YourUniqueId}_0` is the original/default one and `Ftr_{YourUniqueId}_{1-7}` are the customization names.
 
 e.g. 
-```
+
+```msbt
 ---
 label: Ftr_{YourUniqueId}_0
 attribute: 
