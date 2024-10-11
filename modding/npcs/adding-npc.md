@@ -34,6 +34,7 @@ We'll start with opening `NmlNpcParam.bcsv` in **Heaven Tool** and get the guts 
 Now let's go over the cells, we'll be moving from left to right and I'll be touching on only the cells I actively changed. A lot of columns are self explanatory, but I'll be talking about them anyway. Each of the images below these descriptions list all the possible entries in certain columns.
 
 **a54f92fd** - Preferred clothing style by country of origin
+
 | Value | Description |
 | ---- | ----------- |
 | `4` | Chinese |
@@ -41,6 +42,7 @@ Now let's go over the cells, we'll be moving from left to right and I'll be touc
 | `10` | Japanese |
 
 **5ef86f1f** - 1st preferred style of clothing
+
 | Value | Description |
 | ---- | ----------- |
 | `1` | Simple |
@@ -51,6 +53,7 @@ Now let's go over the cells, we'll be moving from left to right and I'll be touc
 | `6` | Elegant |
 
 **195815cf** - 1st Preferred Style of Clothing
+
 | Value | Description |
 | ---- | ----------- |
 | `1` | Simple |
