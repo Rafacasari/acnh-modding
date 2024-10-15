@@ -20,11 +20,21 @@ Where `{AssetName}` is the name for your item/furniture.
 !> This tutorial assumes you already know the basic of modding and know how to do model replacements.
 
 ## Part 0
-Make sure you're using a model that already supports `ReBody` or `ReFabric` by looking at the model materials.
+You'll need to check if the model you're using already supports customization by looking at the model materials (`output.bfres` > `Models` > `{ModelName}` > `Materials`) and searching for `ReBody` or `ReFabric`.
 
-![image](https://github.com/user-attachments/assets/b2b225d2-dbc9-4cee-b42a-491218817382)
+If your model does **not** contain `mReBody` or `mReFabric` it means the this model don't support customizations, however, you can convert it with some additional steps:
+1. Duplicate the model file (`Ftr{AssetName}.Nin_NX_NVN.zs`) naming it `Ftr{AssetName}ReBody0.Nin_NX_NVN.zs` or `Ftr{AssetName}ReFabric0.Nin_NX_NVN.zs` (depending on what you want, ReBody or ReFabric, you can have both if you want)
+2. In the original model (`Ftr{AssetName}.Nin_NX_NVN.zs`) rename the material that you want to customize to `mReBody` or `mReFabric` (to have both materials you model need at least 2 materials)
+3. Rename the materials from `mBody_*` to `mReBody_*` / `mReFabric_*` according to the material that you renamed
+   
+![image](https://github.com/user-attachments/assets/179a5043-e67a-4d84-9c66-0095879bbf67)
 
-If your model do **not** support it, you'll need to find and copy a Model that supports and replace the Mesh with your desired Mesh (just like any other model, but without importing a Albedo texture)
+4. As you may noticed in the screenshot above, some textures like `mReBody_Alb`, `mReFabric_Alb`, `mBody_Mix` and `mBody_Nm` **have been removed** this happen cause you have to **delete the textures that are gonna be replaced in other files**, this will depend on what you want to change, so deleting `*_Alb`, `{Material}_Mix` if you gonna have custom mix textures for that material and `{Material}_Nm` if you gonna have custom normal maps for that material.
+5. Now for the previously duplicated file (`Ftr{AssetName}ReBody0.Nin_NX_NVN.zs` or `Ftr{AssetName}ReFabric0.Nin_NX_NVN.zs`) you will need to remove the Model file (from the Models folder) and keep just the textures that you have deleted in the previous step (like `*_Alb`)
+
+![image](https://github.com/user-attachments/assets/3f7c6397-deed-46f7-bcfc-58bb68e8560b)
+
+> **Note:** `Ftr{AssetName}ReBody0.Nin_NX_NVN.zs` and `Ftr{AssetName}ReFabric0.Nin_NX_NVN.zs` (ending with 0) are the default textures for your model!
 
 ## Part 1
 Find the `Ftr{AssetName}ReBody0.Nin_NX_NVN.zs` or `Ftr{AssetName}ReFabric0.Nin_NX_NVN.zs` file of your model (or copy one from the same model that you used as base)
