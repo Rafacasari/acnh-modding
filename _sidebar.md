@@ -9,3 +9,5 @@
     - [Adding Furniture](modding/furniture/adding-furniture)
     - [Adding Furniture Recolors](modding/furniture/furniture-recolor)
     - [Adding a new NPC](modding/npcs/adding-npc)
+- Dumping
+    - [Pocket Camp](dumping/dumping-pocket-camp)
