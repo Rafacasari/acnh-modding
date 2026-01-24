@@ -1,3 +1,8 @@
+# Obsolote, use the new docs!
+You can find the new docs here: 
+https://github.com/acnhmodding/acnhmodding.github.io
+
+
 # Animal Crossing: New Horizons Docs
 
 Welcome to the ACNH Modding Docs! ❤️
