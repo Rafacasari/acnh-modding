@@ -1,4 +1,4 @@
-# Obsolote, use the new docs!
+# Obsolete, use the new docs!
 You can find the new docs here: 
 https://github.com/acnhmodding/acnhmodding.github.io
 
